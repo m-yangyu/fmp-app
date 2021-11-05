@@ -5,4 +5,4 @@
 
 ## 初步设计
 
-![设计思维导图](https://github.com/m-yangyu/study/blob/master/study/public/image/design.png)
+![设计思维导图](http://study.maqixiang.com/assets/img/design.6b49d95d.png)
