@@ -1,11 +1,16 @@
 import Koa from 'koa';
 import * as koaStatic from 'koa-static';
 import * as http from 'http';
+import { readStream } from '../utils/index';
 
 const app = new Koa();
+
 app.use(async (ctx, next) => {
-    await next;
+    await next();
+    const result = await readStream(ctx.body);
+    ctx.body = result;
 })
+
 app.use(koaStatic(process.cwd(), {
     setHeaders: (res, path) => {
         if (/\.[tj]sx?$/.test(path)) {
