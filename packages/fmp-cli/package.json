@@ -35,6 +35,8 @@
   },
   "dependencies": {
     "@types/node": "^16.11.6",
+    "@vue/compiler-sfc": "^3.2.21",
+    "@vue/component-compiler-utils": "^3.3.0",
     "chalk": "4.1.2",
     "commander": "8.3.0",
     "esbuild": "0.13.12",
