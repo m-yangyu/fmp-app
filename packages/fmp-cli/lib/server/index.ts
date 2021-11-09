@@ -2,21 +2,22 @@ import Koa from 'koa';
 import * as koaStatic from 'koa-static';
 import * as http from 'http';
 import { readStream } from '../utils/index';
-const { parse } = require('@vue/component-compiler-utils')
 import * as compiler  from '@vue/compiler-sfc';
+import * as inlineCss from 'inline-css';
 
 const app = new Koa();
 
 app.use(async (ctx, next) => {
     await next();
-    const result = await readStream(ctx.body);
-    const source = `
+    if (ctx.body) {
+        const result = await readStream(ctx.body);
+        const source = `
 <template>
     <div id="foo" :class="bar.baz">
-    {{ world.burn() }}
-    <div v-if="ok">yes</div>
-    <template v-else>no</template>
-    <div v-for="(value, index) in list"><span>{{ value + index }}</span></div>
+        {{ world.burn() }}
+        <div class="c" v-if="ok">yes</div>
+        <template v-else>no</template>
+        <div v-for="(value, index) in list"><span>{{ value + index }}</span></div>
     </div>
 </template>
 <script>
@@ -28,19 +29,28 @@ export defalt defineComponent({
     }
 });
 </script>
-`.trim()
-    // const { code } = compiler(source, {
-    //     sourceMap: true,
-    //     filename: `foo.vue`
-    // });
+<style lang="scss">
+#foo {
+    color: #fff;
+}
+#foo .c:before{
+    background: #fff;
+}
+</style>
+    `.trim()
+        const { descriptor } = compiler.parse(source, {
+            filename: 'text.vue',
+            sourceMap: false,
+        })
 
-    const { descriptor, errors } = compiler.parse(source, {
-        filename: 'text.vue',
-        sourceMap: false,
-    })
+        descriptor.template = await inlineCss(`
+        ${descriptor.template?.content}
+        <style>${descriptor.styles}</style>
+        `, { url: '/' });
+        console.log(descriptor);
 
-    console.log(descriptor);
-    ctx.body = result;
+        ctx.body = result;
+    }
 })
 
 app.use(koaStatic(process.cwd(), {

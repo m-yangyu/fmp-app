@@ -4,5 +4,6 @@ export const readStream = (stream) => {
         stream.on('data', (chunk) => { data += chunk });
         stream.on('end', () => resolve(data))
         stream.on('error', (err) => reject(err))
+
     })
 }
