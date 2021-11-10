@@ -10,10 +10,18 @@
 ## todolist
 
 - [ ] vue编译工具 
-  - [ ] koa服务
+  - [x] koa服务
+  - [x] less模块解析
+  - [x] css文件内联
+    - [ ] 问题1： 伪类等方法无法使用，原因是内联到dom上了
+    - [ ] 问题2： vue的动态语法:class会导致内联失败
+  - [ ] vue单文件解析成JS
+    - [x] vue中template转function
+  - [ ] vue单文件，开发环境下组件切换成单个组件模板，通过name区分不同的组件
   - [ ] esbuild单文件构建
   - [ ] 静态资源文件的处理
   - [ ] node_modules里的文件单独处理
+  - [ ] 基于文件监听的websocket热更新策略
 - [ ] compiler
   - [ ] 将Vue组件生成对应的Page / Component
   - [ ] vue组件与小程序对应的生命周期合并
