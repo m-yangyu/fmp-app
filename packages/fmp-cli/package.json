@@ -13,7 +13,7 @@
     "lib": "lib",
     "test": "__tests__"
   },
-  "bind": {
+  "bin": {
     "fmp-cli": "./bin/index.js"
   },
   "files": [
