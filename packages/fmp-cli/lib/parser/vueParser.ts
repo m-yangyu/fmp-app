@@ -17,18 +17,9 @@ export const vueParser = async (descriptor) => {
 
     const { code } = baseCompile(descriptor.template?.content as string);
 
-    const scriptContentArr = descriptor.script.content.split('\n');
+    descriptor.script.content = descriptor.script.content.replace('export default', 'const _fmp_script = ');
 
-    let exportDefaultIndex = 0;
-
-    for (let i = 0; i < scriptContentArr.length; i++) {
-        if (/export default/.test(scriptContentArr[i])) {
-            exportDefaultIndex = i;
-            break;
-        }
-    }
-
-    scriptContentArr.splice(exportDefaultIndex + 1, 0, `render: (new Function(${code})()),`);
-
-    descriptor.script.content = scriptContentArr.join('\n');
+    descriptor.script.content += `
+_fmp_script.render = (new Function(${code})())
+`;
 }
