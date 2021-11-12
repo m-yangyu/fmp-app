@@ -1,5 +1,5 @@
 <template>
-	<text
+	<div
 		class="iconfont"
 		:class="['iconfont',`icon-${name}`,`${className}`]"
 		:style="{
@@ -8,14 +8,14 @@
             margin,
         }"
 		@click="handleClick" >
-		<text class="a"></text>
-	</text>
+		<div class="a">123123123</div>
+	</div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
+<script>
+import { defineComponent } from 'vue';
 
-export default Vue.extend({
+export default defineComponent({
 	name: 'font-icon',
 	props: {
 		display: {
@@ -55,7 +55,7 @@ export default Vue.extend({
 		background: #fff;
 		border-radius: 50%;
 		.a {
-			color: #fff;
+			color: #000;
 		}
 	}
 </style>

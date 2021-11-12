@@ -13,7 +13,7 @@
     "lib": "lib",
     "test": "__tests__"
   },
-  "bind": {
+  "bin": {
     "fmp-cli": "./bin/index.js"
   },
   "files": [
@@ -40,6 +40,7 @@
     "@vue/component-compiler-utils": "^3.3.0",
     "chalk": "4.1.2",
     "commander": "8.3.0",
+    "es-module-lexer": "^0.9.3",
     "esbuild": "0.13.12",
     "inline-css": "^3.0.0",
     "koa": "2.13.4",
