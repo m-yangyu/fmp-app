@@ -1,4 +1,4 @@
-import { readStream } from '../utils/index';
+import { readStream } from '../../utils/index';
 import * as compiler  from '@vue/compiler-sfc';
 import { vueParser } from "../parser";
 
