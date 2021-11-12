@@ -16,10 +16,16 @@ export const vueParser = async (descriptor) => {
     // const ast = baseParse(descriptor.template?.content as string);
 
     const { code } = baseCompile(descriptor.template?.content as string);
+    let scriptContent = descriptor.script.content;
 
-    descriptor.script.content = descriptor.script.content.replace('export default', 'const _fmp_script = ');
+    scriptContent = scriptContent.replace('export default', 'const _fmp_script = ');
 
-    descriptor.script.content += `
-_fmp_script.render = (new Function(${code})())
-`;
+    const jsCode = scriptContent + `
+${ !/Vue/.test(scriptContent) ? "import * as Vue from 'vue';" : '' }
+_fmp_script.render = (new Function('Vue', \`${code.replace(/\`/g, '\\`').replace(/\$/g, '\\$')}\`)(Vue))
+
+export default _fmp_script;
+` ;
+
+    return { code: jsCode };
 }

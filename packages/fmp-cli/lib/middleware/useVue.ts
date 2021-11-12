@@ -11,7 +11,7 @@ export const useVue = async (ctx, next) => {
             filename: context.filename,
             sourceMap: false,
         })
-        await vueParser(descriptor);
+       const { code } = await vueParser(descriptor);
         // const { code } = baseCompile(descriptor.template?.content as string);
         // const render = new Function(code);
         
@@ -21,6 +21,6 @@ export const useVue = async (ctx, next) => {
 
 
         // console.log(descriptor);
-        ctx.vueDescriptor = descriptor;
+        ctx.vue2JsResult = code;
     }
 }
