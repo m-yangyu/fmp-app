@@ -1,0 +1,39 @@
+{
+  "name": "@fmp/app",
+  "version": "0.0.0",
+  "description": "fmp主包",
+  "keywords": [
+    "fmp",
+    "fmp-app"
+  ],
+  "author": "m-yangyu <2388560359@qq.com>",
+  "homepage": "https://github.com/m-yangyu/fmp-app/tree/main/packages/fmp-app#readme",
+  "license": "ISC",
+  "main": "lib/fmp-app.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.ddxq.mobi/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m-yangyu/fmp-app.git"
+  },
+  "scripts": {
+    "dev": "tsc -w",
+    "prod": "tsc"
+  },
+  "bugs": {
+    "url": "https://github.com/m-yangyu/fmp-app/issues"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^16.11.7",
+    "typescript": "^4.4.4"
+  }
+}

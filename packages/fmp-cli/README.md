@@ -1,11 +1,3 @@
 # `fmp-cli`
 
-> TODO: description
-
-## Usage
-
-```
-const fmpCli = require('fmp-cli');
-
-// TODO: DEMONSTRATE API
-```
+> 作为启动node服务，解析vue文件的相关命令行工具

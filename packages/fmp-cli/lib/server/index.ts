@@ -1,7 +1,7 @@
 import Koa from 'koa';
 import * as koaStatic from 'koa-static';
 import * as http from 'http';
-import { useVue, useContext, useResult } from '../middleware';
+import { useVue, useContext, useResult } from './middleware';
 
 const app = new Koa();
 

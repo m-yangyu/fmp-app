@@ -1,5 +1,5 @@
 import { baseCompile, baseParse } from '@vue/compiler-core';
-import { cssInDomStyle } from '../parser';
+import { cssInDomStyle } from './cssParser';
 // import { init, parse } from 'es-module-lexer';
 
 export const vueParser = async (descriptor) => {

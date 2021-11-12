@@ -1,6 +1,7 @@
 import { program } from 'Commander';
 import * as path from 'path';
 import { createServer } from './server';
+import { createClient } from './client';
 
 const pkg = require(path.resolve(__dirname, '../../package.json'));
 
@@ -17,6 +18,7 @@ export default () => {
         .action((source) => {
             // dev 开发
             createServer();
+            createClient();
         })
 
     program
