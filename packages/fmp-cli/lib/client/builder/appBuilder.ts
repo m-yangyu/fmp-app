@@ -9,5 +9,6 @@ export default class AppBuilder extends BaseBuilder {
         super(options);
         this.buildOptions.type = 'App';
         this.buildOptions.name = 'getAppConfig';
+        this.isApp = true;
     }
 }

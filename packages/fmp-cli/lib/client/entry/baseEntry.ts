@@ -1,3 +1,5 @@
+import * as path from 'path';
+
 export interface StyleType {
     navigationBarBackgroundColor?: string; // #000000
     navigationBarTextStyle?: string; // white
@@ -39,7 +41,8 @@ export default class BaseEntry {
 
     constructor() {
         this.root = process.cwd();
-        this.source = `${this.root}/src/`;
+        // this.source = `${this.root}/src/`;
+        this.source = path.join(this.root, 'src');
         this.file = 'page.config.json';
         this.config = require(`${this.source}/${this.file}`);
         this.appPath = '';

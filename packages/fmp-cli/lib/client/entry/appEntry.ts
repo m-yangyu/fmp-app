@@ -3,6 +3,7 @@ import BaseEntry from "./baseEntry";
 export default class AppEntry extends BaseEntry {
     constructor() {
         super();
+        this.appPath = 'app';
     }
 
     getEntry() {
