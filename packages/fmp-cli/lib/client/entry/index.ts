@@ -1,3 +1,7 @@
-export * from './baseEntry';
-export * as AppEntry from './appEntry';
-export * as PageEntry from './pageEntry';
+import AppEntry from './appEntry';
+import PageEntry from './pageEntry';
+
+export {
+    AppEntry,
+    PageEntry
+}

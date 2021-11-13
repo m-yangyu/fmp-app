@@ -32,9 +32,32 @@ export default class BaseEntry {
     protected root: string;
     protected file: string;
     protected config: PageConfigType;
+    protected source: string;
+
+    public appPath: string;
+    public pages: Record<string, StyleType>;
+
     constructor() {
         this.root = process.cwd();
-        this.file = 'src/page.config.json';
-        this.config = require(`${this.root}/${this.file}`);
+        this.source = `${this.root}/src/`;
+        this.file = 'page.config.json';
+        this.config = require(`${this.source}/${this.file}`);
+        this.appPath = '';
+        this.pages = {};
+        this.init();
+    }
+
+    init() {
+        const config = this.config;
+        config.pages.forEach((page) => {
+            this.pages[page.path] = page.style;
+        })
+        if (config.subpackages) {
+            config.subpackages.forEach((subpackage) => {
+                subpackage.pages.forEach((page) => {
+                    this.pages[`${subpackage.root}/${page.path}`] = page.style;
+                })
+            })
+        }
     }
 }
