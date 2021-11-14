@@ -41,7 +41,6 @@ export default class BaseEntry {
 
     constructor() {
         this.root = process.cwd();
-        // this.source = `${this.root}/src/`;
         this.source = path.join(this.root, 'src');
         this.file = 'page.config.json';
         this.config = require(`${this.source}/${this.file}`);

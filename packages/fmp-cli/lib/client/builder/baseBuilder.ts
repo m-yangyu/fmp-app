@@ -23,17 +23,13 @@ export default class BaseBuilder {
 ${type}(${name}(${path}))`;
     }
 
-    write(path: string, content: string) {
-        // const pathArr = path.split('/');
-        // pathArr.pop();
-        // const dir = pathArr.join('/');
-        // console.log(fs.pathExistsSync(path));
+    write(pathname: string, content: string) {
+        const dir = path.dirname(pathname);
+        if (!fs.pathExistsSync(dir)) {
+            fs.mkdirsSync(dir);
+        }
+        fs.writeFile(pathname, content);
 
-
-        // if (!fs.pathExistsSync(dir)) {
-        //     fs.mkdirsSync(dir);
-        // }
-        fs.writeFile(path, content);
     }
 
     build(json?: any) {
@@ -41,12 +37,10 @@ ${type}(${name}(${path}))`;
         const jsContent = this.getJsContent();
         const template = '<template></template>';
 
-        fs.emptyDirSync(path.join(this.root, 'dist'));
-
         this.write(path.join(this.root, 'dist', `${filePath}.js`), jsContent);
-        // if (!this.isApp) {
-        //     this.write(path.join(this.root, 'dist', `${filePath}.wxml`), template);
-        // }
-        // json && this.write(path.join(this.root, 'dist', `${filePath}.json`), JSON.stringify(json));
+        if (!this.isApp) {
+            this.write(path.join(this.root, 'dist', `${filePath}.wxml`), template);
+        }
+        this.write(path.join(this.root, 'dist', `${filePath}.json`), JSON.stringify(json));
     }
 }

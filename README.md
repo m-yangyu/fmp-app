@@ -22,6 +22,7 @@
   - [ ] 静态资源文件的处理
   - [ ] node_modules里的文件单独处理
   - [ ] 基于文件监听的websocket热更新策略
+  - [x] 生成小程序的代码模板
 - [ ] compiler
   - [ ] 将Vue组件生成对应的Page / Component
   - [ ] vue组件与小程序对应的生命周期合并

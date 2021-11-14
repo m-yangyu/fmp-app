@@ -1,5 +1,7 @@
 import { AppEntry, PageEntry } from "./entry";
 import { AppBuilder, PageBuilder, ComponentBuilder } from "./builder";
+import * as fs from 'fs-extra';
+import * as path from 'path';
 
 const buildApp = () => {
     const appEntry = new AppEntry();
@@ -14,10 +16,20 @@ const buildPage = () => {
 }
 
 const buildComponent = () => {
-    new ComponentBuilder({ path: 'components/common' }).build();
+    new ComponentBuilder({ path: 'components/common' }).build({
+        component: true,
+        usingComponents: {
+            myComponent: '/components/common',
+        }
+    });
+}
+
+const clearDist = () => {
+    fs.emptyDirSync(path.join(process.cwd(), 'dist'));
 }
 
 export const createClient = () => {
+    clearDist();
     buildApp();
     buildPage();
     buildComponent();
