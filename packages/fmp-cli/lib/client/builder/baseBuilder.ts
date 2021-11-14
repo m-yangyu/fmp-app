@@ -20,7 +20,7 @@ export default class BaseBuilder {
     getJsContent() {
         const { name, type, path } = this.buildOptions;
         return `import { ${name} } from '@fmp-app';
-${type}(${name}(${path}))`;
+${type}(${name}('${path}'))`;
     }
 
     write(pathname: string, content: string) {
