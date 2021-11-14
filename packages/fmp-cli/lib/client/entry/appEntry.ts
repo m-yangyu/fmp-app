@@ -3,10 +3,11 @@ import BaseEntry from "./baseEntry";
 export default class AppEntry extends BaseEntry {
     constructor() {
         super();
+        this.appPath = 'app';
     }
 
     getEntry() {
-        const config = this.config;
+        const config = JSON.parse(JSON.stringify(this.config));
         config.pages = config.pages.map((page) => page.path);
 
         if (config.subpackages) {
