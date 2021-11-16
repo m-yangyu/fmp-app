@@ -8,6 +8,7 @@
             margin,
         }"
 		@click="handleClick" >
+			<slot></slot>
 		<div class="a">123123123</div>
 	</div>
 </template>
