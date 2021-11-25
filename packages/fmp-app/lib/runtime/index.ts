@@ -1,4 +1,5 @@
 import * as Vue from 'vue';
+import { createApp } from './renderer';
 import { getOptionsByRequest } from '../utils';
 
 export interface APPInstanceType extends Vue.App {
@@ -25,7 +26,7 @@ export interface PageInstanceType extends Vue.App {
 }
 
 export const getPageConfig = async (path: string) => {
-    const instance: PageInstanceType = Vue.createApp(await getOptionsByRequest(path));
+    const instance: PageInstanceType = createApp(await getOptionsByRequest(path));
     return {
         data: {
             text: "This is page data."
@@ -87,7 +88,7 @@ export const getComnponentConfig = (path: string) => {
 
 export const getAppConfig = async (path: string) => {
     // 模拟写下
-    const instance: APPInstanceType = Vue.createApp(await getOptionsByRequest(path));
+    const instance: APPInstanceType = createApp(await getOptionsByRequest(path));
     return {
         onLaunch (options) {
             instance.onLaunch && instance.onLaunch(options);
