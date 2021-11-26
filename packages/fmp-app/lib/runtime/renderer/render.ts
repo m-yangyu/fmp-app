@@ -5,8 +5,9 @@ import {
 } from '@vue/runtime-core'
 import { nodeOps, FmpElement } from './nodeOps'
 import { extend } from '@vue/shared'
+import { patchProp } from './patchProp'
 
-const { render: baseRender, createApp: baseCreateApp } = createRenderer(extend(nodeOps))
+const { render: baseRender, createApp: baseCreateApp } = createRenderer(extend({ patchProp }, nodeOps))
 
 export const render = baseRender as RootRenderFunction<FmpElement>
 
@@ -24,3 +25,4 @@ export const createApp = ((...args) => {
 
 export * from './nodeOps'
 export * from '@vue/runtime-core'
+    
