@@ -3,15 +3,18 @@ import { AppBuilder, PageBuilder, ComponentBuilder } from "./builder";
 import * as fs from 'fs-extra';
 import * as path from 'path';
 
+const rootPath = process.cwd();
+const sourcePath = path.join(rootPath, 'src');
+
 const buildApp = () => {
     const appEntry = new AppEntry();
-    new AppBuilder({ path: appEntry.appPath }).build(appEntry.getEntry());
+    new AppBuilder({ path: path.join(rootPath, appEntry.appPath) }).build(appEntry.getEntry());
 }
 
 const buildPage = () => {
     const pageEntry = new PageEntry();
     Object.keys(pageEntry.pages).forEach(pageName => {
-        new PageBuilder({ path: pageName }).build(pageEntry.getEntry(pageName));
+        new PageBuilder({ path: path.join(sourcePath, pageName) }).build(pageEntry.getEntry(pageName));
     });
 }
 
@@ -32,5 +35,5 @@ export const createClient = () => {
     clearDist();
     buildApp();
     buildPage();
-    buildComponent();
+    // buildComponent();
 }
