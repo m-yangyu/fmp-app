@@ -1,14 +1,23 @@
 import * as Vue from 'vue';
 import { createApp } from './renderer';
 import { getOptionsByRequest } from '../utils';
+import { triggerLifeCycle } from './lifeCycle/lifeCycle';
+import {
+    setCurrentPage,
+    setCurrentComponent,
+    setCurrentApp,
+    unsetCurrentComponent,
+    unsetCurrentPage,
+    unsetCurrentApp,
+} from './instance';
 
-export interface APPInstanceType extends Vue.App {
-    onLaunch?: (options: Record<string, any>) => void;
-    onShow?: (options: Record<string, any>) => void;
-    onHide?: () => void;
-    onError?: (msg: string) => void;
-    globalData?: Record<string, any>;
-};
+// export interface APPInstanceType extends Vue.DefineComponent {
+//     onLaunch?: (options: Record<string, any>) => void;
+//     onShow?: (options: Record<string, any>) => void;
+//     onHide?: () => void;
+//     onError?: (msg: string) => void;
+//     globalData?: Record<string, any>;
+// };
 
 export interface PageInstanceType extends Vue.App {
     onLoad?: (options: Record<string, any>) => void;
@@ -88,10 +97,16 @@ export const getComnponentConfig = (path: string) => {
 
 export const getAppConfig = async (path: string) => {
     // 模拟写下
-    const instance: APPInstanceType = createApp(await getOptionsByRequest(path));
+    const app = createApp(await getOptionsByRequest(path));
+    // 获取到当前app的对应的组件应用实例
+    const instance: any = app._component;
+    // mount执行会返回对应组件的this指向
+    setCurrentApp(instance);
+    const publicThis = app.mount(instance.name || path);
+    unsetCurrentApp();
     return {
         onLaunch (options) {
-            instance.onLaunch && instance.onLaunch(options);
+            triggerLifeCycle(instance, 'onLaunch');
         },
         onShow (options) {
             instance.onShow && instance.onShow(options);

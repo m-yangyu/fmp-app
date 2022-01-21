@@ -43,7 +43,7 @@ export default class BaseEntry {
         this.root = process.cwd();
         this.source = path.join(this.root, 'src');
         this.file = 'page.config.json';
-        this.config = require(`${this.source}/${this.file}`);
+        this.config = require(path.join(this.source, this.file));
         this.appPath = '';
         this.pages = {};
         this.init();

@@ -1,12 +1,12 @@
 {
-    "pages": [
-        {
-            "path": "pages/mainPackage/home/home",
-            "style": {
-              "navigationBarTitleText": "叮咚买菜",
-              "navigationBarBackgroundColor": "#ffffff",
-              "enablePullDownRefresh": true
-            }
+  "pages": [
+      {
+          "path": "pages/mainPackage/home/home",
+          "style": {
+            "navigationBarTitleText": "叮咚买菜",
+            "navigationBarBackgroundColor": "#ffffff",
+            "enablePullDownRefresh": true
           }
-    ]
+        }
+  ]
 }

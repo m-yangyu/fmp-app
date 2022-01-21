@@ -1,5 +1,5 @@
 import { AppEntry, PageEntry } from "./entry";
-import { AppBuilder, PageBuilder, ComponentBuilder } from "./builder";
+import { AppBuilder, PageBuilder } from "./builder";
 import * as fs from 'fs-extra';
 import * as path from 'path';
 
@@ -16,12 +16,7 @@ const buildPage = () => {
 }
 
 const buildComponent = () => {
-    new ComponentBuilder({ path: 'components/common' }).build({
-        component: true,
-        usingComponents: {
-            myComponent: '/components/common',
-        }
-    });
+    
 }
 
 const clearDist = () => {
