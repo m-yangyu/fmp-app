@@ -1,19 +1,4 @@
-<template>
-	<div
-		class="iconfont"
-		:class="['iconfont',`icon-${name}`,`${className}`]"
-		:style="{
-            color,
-            fontSize: size + 'rpx',
-            margin,
-        }"
-		@click="handleClick" >
-			<slot></slot>
-		<div class="a">123123123</div>
-	</div>
-</template>
-
-<script>
+<script lang="javascript">
 import { defineComponent } from 'vue';
 
 export default defineComponent({
