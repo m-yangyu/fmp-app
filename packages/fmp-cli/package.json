@@ -34,17 +34,10 @@
     "url": "https://github.com/m-yangyu/fmp-app/issues"
   },
   "dependencies": {
-    "@babel/types": "^7.16.0",
     "@types/node": "^16.11.6",
-    "@vue/compiler-core": "^3.2.28",
-    "@vue/compiler-sfc": "^3.2.21",
-    "@vue/component-compiler-utils": "^3.3.0",
     "chalk": "4.1.2",
     "commander": "8.3.0",
-    "es-module-lexer": "^0.9.3",
-    "esbuild": "0.13.12",
     "fs-extra": "^10.0.0",
-    "inline-css": "^3.0.0",
     "koa": "2.13.4",
     "koa-static": "^5.0.0",
     "less": "^4.1.2",

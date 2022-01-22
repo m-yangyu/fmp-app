@@ -1,7 +1,7 @@
 import { program } from 'Commander';
 import * as path from 'path';
-// import { createServer } from './server';
-import { createClient } from './client';
+import { build } from './builder';
+import { setPlatform } from './platform';
 
 const pkg = require(path.resolve(__dirname, '../../package.json'));
 
@@ -16,16 +16,15 @@ export default () => {
         .command('dev [source]')
         .description('启动本地开发环境')
         .action((source) => {
-            // dev 开发
-            // createServer();
-            createClient();
+            setPlatform(source);
+            build();
         })
 
     program
         .command('build')
         .description('启动本地编译')
         .action(() => {
-            // build 编译
+
         })
 
 
