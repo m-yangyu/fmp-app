@@ -1,0 +1,22 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 error pnpm": {
+    "code": "ELIFECYCLE",
+    "errno": "ENOENT",
+    "syscall": "spawn",
+    "file": "sh",
+    "pkgid": "fmp-app@1.0.0",
+    "stage": "dev",
+    "script": "vite",
+    "pkgname": "fmp-app",
+    "err": {
+      "name": "pnpm",
+      "message": "fmp-app@1.0.0 dev: `vite`\nspawn ENOENT",
+      "code": "ELIFECYCLE",
+      "stack": "pnpm: fmp-app@1.0.0 dev: `vite`\nspawn ENOENT\n    at ChildProcess.<anonymous> (/Users/bytedance/.nvm/versions/node/v14.18.0/lib/node_modules/pnpm/dist/pnpm.cjs:91972:22)\n    at ChildProcess.emit (events.js:400:28)\n    at maybeClose (internal/child_process.js:1058:16)\n    at Process.ChildProcess._handle.onexit (internal/child_process.js:293:5)"
+    }
+  },
+  "2 warn pnpm:global": " Local package.json exists, but node_modules missing, did you mean to install?"
+}

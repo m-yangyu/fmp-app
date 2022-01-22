@@ -1,15 +1,18 @@
-import metas from './meta';
+import metas, { PlatformType } from './meta';
 
-export type PlatformType = 'h5' | 'mp-weixin' | 'mp-alipay'; 
+let currentPlatform: PlatformType = PlatformType.h5;
 
-let currentPlatform: PlatformType = 'h5';
+export { PlatformType } from './meta';
+
 
 export const getPlatform = () => {
     return currentPlatform;
 }
 
 export const setPlatform = (platform: PlatformType) => {
-    currentPlatform = platform; 
+    if (platform) {
+        currentPlatform = platform; 
+    }
 }
 
 export const getPlatformMeta = () => {
