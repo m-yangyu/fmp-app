@@ -1,3 +1,13 @@
 {
-    "pages": []
+    "pages": [
+        "pages/mainPackage/home/home"
+    ],
+    "subpackages": [
+        {
+            "root": "pages/testPackage",
+            "pages": [
+                "test/test"
+            ]
+        }
+    ]
 }
