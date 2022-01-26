@@ -8,7 +8,8 @@ export const build = () => {
         const webpackConfig = getWebpackConfig();
         console.log(webpackConfig);
         const compiler = webpack(webpackConfig);
-        compiler.run((stats) => {
+        console.log(compiler.run);
+        compiler.run((err, stats) => {
             console.log(stats, 111);
         });
     }

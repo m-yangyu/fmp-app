@@ -1,17 +1,22 @@
 import { getEntry } from '../entry';
+import * as path from 'path';
 
 export const getWebpackConfig = () => {
     const config: Record<string, any> = {};
 
     config.entry = getEntry();
 
+    config.output = {
+        filename: '[name].js',
+        path: path.resolve(process.cwd(), 'dist'),
+    };
+
     config.module = {
         rules: [
             {
-                test: '\.(j|t)s',
-                resouceQuery: 'page',
+                test: /\.(t|j)s$/,
                 use: [
-                    './loader/fmp-entry-loader.js'
+                    path.join(__dirname, './loader/fmp-entry-loader.js')
                 ]
             }
         ]
