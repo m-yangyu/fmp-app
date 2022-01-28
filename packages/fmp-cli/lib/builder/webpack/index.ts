@@ -1,5 +1,6 @@
 import { getEntry } from '../entry';
 import * as path from 'path';
+const { VueLoaderPlugin } = require('vue-loader/dist/index')
 
 export const getWebpackConfig = () => {
     const config: Record<string, any> = {};
@@ -13,16 +14,22 @@ export const getWebpackConfig = () => {
 
     config.module = {
         rules: [
+            // {
+            //     test: /\.(t|j)s$/,
+            //     use: [
+            //         path.join(__dirname, './loader/fmp-entry-loader.js')
+            //     ]
+            // }
             {
-                test: /\.(t|j)s$/,
-                use: [
-                    path.join(__dirname, './loader/fmp-entry-loader.js')
-                ]
-            }
+                test: /\.vue$/,
+                loader: 'vue-loader',
+            },
         ]
     }
 
-    config.plugins = [];
+    config.plugins = [
+        new VueLoaderPlugin(),
+    ];
 
     return config;
 }
