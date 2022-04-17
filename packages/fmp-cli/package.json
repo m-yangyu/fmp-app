@@ -41,8 +41,9 @@
     "koa": "2.13.4",
     "koa-static": "^5.0.0",
     "less": "^4.1.2",
+    "loader-utils": "^3.2.0",
     "prompt": "1.2.0",
-    "webpack": "^5.67.0"
+    "webpack": "4.x.x"
   },
   "devDependencies": {
     "typescript": "^4.4.4"

@@ -6,11 +6,12 @@ export const build = () => {
     const config = getConfig();
     if (config.buildType === BuildType.webpack) {
         const webpackConfig = getWebpackConfig();
-        console.log(webpackConfig);
         const compiler = webpack(webpackConfig);
-        console.log(compiler.run);
+        
         compiler.run((err, stats) => {
-            console.log(stats, 111);
+            if (err) {
+                throw new Error(err.message);
+            }
         });
     }
 }

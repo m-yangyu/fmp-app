@@ -5,6 +5,9 @@ import { setPlatform } from './platform';
 
 const pkg = require(path.resolve(__dirname, '../../package.json'));
 
+console.log(1231231);
+
+
 export default () => {
     program.version(pkg.version);
 
