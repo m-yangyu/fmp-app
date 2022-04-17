@@ -1,8 +1,6 @@
 import { getEntry } from '../entry';
 import * as path from 'path';
 
-// import TestPlugin from './plugin/test';
-
 export const getWebpackConfig = () => {
     const config: Record<string, any> = {};
 
@@ -21,12 +19,16 @@ export const getWebpackConfig = () => {
 
     config.module = {
         rules: [
+            // {
+            //     test: /\.(t|j)s$/,
+            //     use: [
+            //         path.join(__dirname, './loader/fmp-entry-loader.js')
+            //     ]
+            // }
             {
-                test: /\.(t|j)s$/,
-                use: [
-                    path.join(__dirname, './loader/fmp-entry-loader.js')
-                ]
-            }
+                test: /\.vue$/,
+                loader: 'vue-loader',
+            },
         ]
     }
 
