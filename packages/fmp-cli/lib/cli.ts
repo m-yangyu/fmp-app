@@ -2,14 +2,24 @@ import { program } from 'Commander';
 import * as path from 'path';
 import { build } from './builder';
 import { setPlatform } from './platform';
+import * as defaltPlugins from './plugin';
+
+import CommandContext from './helper/command/context';
 
 const pkg = require(path.resolve(__dirname, '../../package.json'));
 
-console.log(1231231);
+program.version(pkg.version);
 
+const context = new CommandContext(program);
 
 export default () => {
-    program.version(pkg.version);
+
+    for (let key in defaltPlugins) {
+        const plugin = defaltPlugins[key];
+        if (plugin.type === defaltPlugins.IPluginType.Command) {
+            plugin.register(context);
+        }
+    }
 
     program
         .option('-d --dev', '启动开发环境')
@@ -27,9 +37,8 @@ export default () => {
         .command('build')
         .description('启动本地编译')
         .action(() => {
-
+            console.log(999);
         })
-
 
     program.parse(process.argv);
 }
